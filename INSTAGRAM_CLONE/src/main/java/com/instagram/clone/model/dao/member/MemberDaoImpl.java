@@ -1,0 +1,70 @@
+package com.instagram.clone.model.dao.member;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.instagram.clone.model.vo.MemberJoinProfileVo;
+import com.instagram.clone.model.vo.MemberProfileVo;
+import com.instagram.clone.model.vo.MemberVo;
+
+@Repository
+public class MemberDaoImpl implements MemberDao {
+
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+
+	@Override
+	public MemberVo login(MemberVo vo) {
+		return sqlSession.selectOne(NAMESPACE + "login", vo);
+	}
+
+	@Override
+	public MemberVo snsLogin(MemberVo vo) {
+		return sqlSession.selectOne(NAMESPACE + "snsLogin", vo);
+	}
+
+	@Override
+	public int emailCheck(MemberVo vo) {
+		return sqlSession.selectOne(NAMESPACE + "emailCheck", vo);
+	}
+
+	@Override
+	public int idCheck(MemberVo vo) {
+		return sqlSession.selectOne(NAMESPACE + "emailCheck", vo);
+	}
+
+	@Override
+	public int join(MemberVo vo) {
+		return sqlSession.insert(NAMESPACE + "join", vo);
+	}
+
+	@Override
+	public int insertProfile(MemberProfileVo memberProfileVo) {
+		return sqlSession.insert(NAMESPACE + "insertProfile", memberProfileVo);
+	}
+
+	@Override
+	public MemberProfileVo selectMemberProfile(int member_code) {
+		return sqlSession.selectOne(NAMESPACE + "selectMemberProfile", member_code);
+	}
+
+	@Override
+	public int updateMemberProfileImage(MemberProfileVo member_profile) {
+		return sqlSession.update(NAMESPACE + "updateMemberProfileImage", member_profile);
+	}
+
+	@Override
+	public List<MemberJoinProfileVo> nameSearchAutoComplete(int my_member_code, String id_name) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("my_member_code", my_member_code);
+		map.put("id_name", id_name);
+
+		return sqlSession.selectList(NAMESPACE + "nameSearchAutoComplete", map);
+	}
+
+}
