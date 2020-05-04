@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.instagram.clone.model.dao.member.MemberDao;
+import com.instagram.clone.model.vo.MemberJoinProfileSimpleVo;
 import com.instagram.clone.model.vo.MemberJoinProfileVo;
 import com.instagram.clone.model.vo.MemberProfileVo;
 import com.instagram.clone.model.vo.MemberVo;
@@ -73,6 +74,11 @@ public class MemberBizImpl implements MemberBiz {
 	@Override
 	public List<MemberJoinProfileVo> nameSearchAutoComplete(int my_member_code, String id_name) {
 		return dao.nameSearchAutoComplete(my_member_code, id_name);
+	}
+
+	@Override
+	public List<MemberJoinProfileSimpleVo> selectMemberList(List<Integer> codeList) {
+		return dao.selectMemberList(codeList);
 	}
 
 }

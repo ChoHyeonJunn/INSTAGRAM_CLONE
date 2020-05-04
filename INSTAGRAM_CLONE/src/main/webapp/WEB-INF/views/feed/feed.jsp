@@ -9,7 +9,7 @@
 	<%@ include file="../form/header.jsp"%>
 <!-- END :: HEADER FORM -->
 
-<!-- START :: board -->
+<!-- START :: feed -->
 	<script type="text/javascript">
 	
 		/* 무한 스크롤 eventListner */
@@ -114,13 +114,8 @@
 	
 		}
 	</script>
-<!-- END :: board -->
-	
-	
-	
+<!-- END :: feed -->
 </head>
-
-
 
 <body>
 	

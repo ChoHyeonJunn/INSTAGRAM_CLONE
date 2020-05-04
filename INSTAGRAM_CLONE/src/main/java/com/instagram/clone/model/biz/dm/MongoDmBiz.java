@@ -1,10 +1,10 @@
-package com.instagram.clone.model.dao.dm;
+package com.instagram.clone.model.biz.dm;
 
 import java.util.List;
 
 import com.instagram.clone.model.vo.DmVo;
 
-public interface MongoDmDao {
+public interface MongoDmBiz {
 
 	public DmVo insertChatRoom(DmVo newRoom);
 

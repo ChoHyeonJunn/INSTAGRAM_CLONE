@@ -10,22 +10,21 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/appServlet/applicationContext.xml</param-value>
 	</context-param>
-	<context-param>  
-	       <param-name>spring.profiles.active</param-name>  
-	       <param-value>dev</param-value>  
-	</context-param>  
-	<context-param>  
-	       <param-name>spring.profiles.default</param-name>  
-	       <param-value>dev</param-value>  
+	<context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>dev</param-value>
 	</context-param>
-	<context-param>  
-	       <param-name>spring.liveBeansView.mbeanDomain</param-name>  
-	       <param-value>dev</param-value>  
-	</context-param>  
+	<context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>dev</param-value>
+	</context-param>
+	<context-param>
+		<param-name>spring.liveBeansView.mbeanDomain</param-name>
+		<param-value>dev</param-value>
+	</context-param>
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener
-		</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
@@ -37,6 +36,7 @@
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
 				/WEB-INF/spring/appServlet/aop-context.xml
+				/WEB-INF/spring/appServlet/mongo-context.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
@@ -51,8 +51,7 @@
 	<!-- utf-8 encoding -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
-		</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>

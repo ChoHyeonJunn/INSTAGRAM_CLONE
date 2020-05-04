@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.instagram.clone.model.vo.MemberJoinProfileSimpleVo;
 import com.instagram.clone.model.vo.MemberJoinProfileVo;
 import com.instagram.clone.model.vo.MemberProfileVo;
 import com.instagram.clone.model.vo.MemberVo;
@@ -65,6 +66,14 @@ public class MemberDaoImpl implements MemberDao {
 		map.put("id_name", id_name);
 
 		return sqlSession.selectList(NAMESPACE + "nameSearchAutoComplete", map);
+	}
+
+	@Override
+	public List<MemberJoinProfileSimpleVo> selectMemberList(List<Integer> codeList) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("codeList", codeList);
+
+		return sqlSession.selectList(NAMESPACE + "selectMemberList", map);
 	}
 
 }

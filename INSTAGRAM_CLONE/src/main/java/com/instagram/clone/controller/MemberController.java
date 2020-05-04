@@ -81,6 +81,16 @@ public class MemberController {
 		return map;
 	}
 
+	// logout 처리
+	@GetMapping(value = "/logout")
+	public ModelAndView logout(HttpSession session) {
+		logger.info("MEMBER/LOGOUT.GET");
+
+		session.removeAttribute("login");
+		session.removeAttribute("profile");
+		
+		return new ModelAndView("redirect:/member/login");
+	}
 	/*
 	 * 회원가입 부분
 	 */

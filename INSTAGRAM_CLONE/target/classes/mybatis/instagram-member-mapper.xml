@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="emailCheck" parameterType="MemberVo" resultType="int">
-		select count(*) 
+		select count(*)
 		from MEMBER
 		where MEMBER_EMAIL = #{member_email}
 	</select>
@@ -58,5 +58,20 @@
 		and m.member_id like '%${id_name}%' 
 		and m.member_name like '%${id_name}%'
 		and m.member_code != #{my_member_code}
+	</select>
+	
+	<select id="selectMemberList" parameterType="map" resultType="MemberJoinProfileSimpleVo">
+		select *
+		from MEMBER m, MEMBER_PROFILE mp
+		where m.member_code = mp.member_code
+		
+		<choose>
+            <when test="codeList.size != 0">
+                and m.member_code 
+                <foreach collection="codeList" item="item" index="index" separator="," open="in (" close=")">
+                    #{item}
+                </foreach>
+            </when>
+        </choose>
 	</select>
 </mapper>
