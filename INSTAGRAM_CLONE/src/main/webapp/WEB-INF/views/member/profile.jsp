@@ -14,10 +14,10 @@
 		$(function(){
 			
 			$("#profile_image").click(function(){
-				$("#member_profile_image_name").click();
+				$("#member_img_original_name").click();
 			})
 			
-			$("#member_profile_image_name").change(function(e){
+			$("#member_img_original_name").change(function(e){
 				var form = $("#imageForm")[0];
 				var formData = new FormData(form);
 				
@@ -64,15 +64,15 @@
 								id="profile_image" 
 								class="w-150 h-150 bg-white cursor-pointer"
 								src="<c:choose>
-										 <c:when test="${not empty sessionLoginMemberProfile.member_profile_image_s_name}">
-										 	/resources/images/profileupload/${sessionLoginMemberProfile.member_profile_image_s_name }
+										 <c:when test="${not empty sessionLoginMemberProfile.member_img_server_name}">
+										 	/resources/images/profileupload/${sessionLoginMemberProfile.member_img_server_name }
 										 </c:when>
 										 <c:otherwise>
 										 	/resources/images/profile/add.png
 										 </c:otherwise>
 									 </c:choose>"
 							>
-							<input id="member_profile_image_name" type="file" name="member_profile_image_name" value="${sessionLoginMemberProfile.member_profile_image_name }">					
+							<input id="member_img_original_name" type="file" name="member_img_original_name" value="${sessionLoginMemberProfile.member_img_original_name }">					
 							
 						</div>
 						
@@ -86,10 +86,11 @@
 							<h3>${sessionLoginMember.member_id }</h3>
 						</div>
 						<div class="my-auto mx-1">
-							<button type="button" class="" onclick=";">프로필 편집</button>
+							<button type="button" class="" onclick="location.href='/member/profileEdit'">프로필 편집</button>
 						</div>
-						<div class="my-auto mx-1">
-							<h3><a href=""><i class="fas fa-cog"></i></a></h3>
+						<div class="my-auto mx-1">수정
+
+							<h3><a href="/member/profileEdit"><i class="fas fa-cog"></i></a></h3>
 						</div>
 					</div>
 					<div class="mb-2">
@@ -97,6 +98,7 @@
 							<li class="nav-item mr-5">게시물 ?</li>
 							<li class="nav-item mr-5">팔로워 ?</li>
 							<li class="nav-item mr-5">팔로우 ?</li>
+							<li class="nav-item mr-5">성별  ?</li>
 						</ul>
 					</div>
 					<div class="mb-2">
@@ -104,10 +106,10 @@
 							${sessionLoginMember.member_name }
 						</div>
 						<div>
-							${sessionLoginMemberProfile.member_profile_introduce }
+							${sessionLoginMemberProfile.member_introduce }
 						</div>
 						<div>
-							<h3>test<a href="${sessionLoginMemberProfile.member_profile_website }">${sessionLoginMemberProfile.member_profile_website }</a></h3>
+							<h3><a href="${sessionLoginMemberProfile.member_website }">${sessionLoginMemberProfile.member_website } 웹 사이트</a></h3>
 						</div>
 					</div>
 				</div>

@@ -35,7 +35,7 @@
 <!-- START :: set JSTL variable -->
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
-	<c:set var="sessionLoginMember" value="${sessionScope.login}"></c:set>
+	<c:set var="sessionLoginMember" value="${sessionScope.user}"></c:set>
 	<c:set var="sessionLoginMemberProfile" value="${sessionScope.profile}"></c:set>
 <!-- END :: set JSTL variable -->
 
@@ -73,27 +73,30 @@
 				<!-- nav list -->						
 				<ul class="navbar-nav list-group-horizontal ml-5">
 					<li class="nav-item">
-						<h4 class="mx-2"><a class="nav-link" href="/feed/feed"><i class="fas fa-home"></i></a></h4>
+						<h4 class="mx-2"><a class="nav-link" href="/ssoclient/logout"><i class="fas fa-sign-out-alt"></i></a></h4>
 					</li>
 					<li class="nav-item">
-						<h4 class="mx-2"><a class="nav-link" href="/dm/dm"><i class="far fa-paper-plane"></i></a></h4>
+						<h4 class="mx-2"><a class="nav-link" href="/feed/"><i class="fas fa-home"></i></a></h4>
 					</li>
 					<li class="nav-item">
-						<h4 class="mx-2"><a class="nav-link" href="/feed/feed"><i class="far fa-compass"></i></a></h4>
+						<h4 class="mx-2"><a class="nav-link" href="/dm/"><i class="far fa-paper-plane"></i></a></h4>
 					</li>
 					<li class="nav-item">
-						<h4 class="mx-2"><a class="nav-link" href="/feed/feed"><i class="far fa-heart"></i></a></h4>
+						<h4 class="mx-2"><a class="nav-link" href="#"><i class="far fa-compass"></i></a></h4>
+					</li>
+					<li class="nav-item">
+						<h4 class="mx-2"><a class="nav-link" href="#"><i class="far fa-heart"></i></a></h4>
 					</li>
 					<li class="nav-item">
 						<h4 class="mx-2">
 							<a class="nav-link" href="/member/profile">
 							<c:choose>
-								<c:when test="${not empty sessionLoginMemberProfile.member_profile_image_s_name}">
+								<c:when test="${not empty sessionLoginMemberProfile.member_img_server_name}">
 									<div class="rounded-circle border border-dark  w-26 h-26 overflow-hidden">										
 										<img 
 											id="header_profile_image" 
 											class="w-26 h-26 bg-white cursor-pointer vertical-align-baseline"
-											src="/resources/images/profileupload/${sessionLoginMemberProfile.member_profile_image_s_name }"
+											src="/resources/images/profileupload/${sessionLoginMemberProfile.member_img_server_name }"
 										>
 									</div>
 								</c:when>
@@ -119,7 +122,7 @@
 		var ws; 
 		
 		function openSocket(){
-	        ws = new WebSocket("ws://localhost:8787/echo");
+	        ws = new WebSocket("ws://localhost:${sessionScope.SERVER_PORT}/echo");
 		}
 		$(function(){
 	        if(ws !== undefined && ws.readyState !== WebSocket.CLOSED){

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import lombok.Data;
+
 @Service
 public class FileValidator implements Validator {
 

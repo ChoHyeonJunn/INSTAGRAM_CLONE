@@ -11,16 +11,6 @@ public interface MemberDao {
 
 	String NAMESPACE = "member.";
 
-	public MemberVo login(MemberVo vo);
-
-	public MemberVo snsLogin(MemberVo vo);
-
-	public int emailCheck(MemberVo vo);
-
-	public int idCheck(MemberVo vo);
-
-	public int join(MemberVo vo);
-
 	public int insertProfile(MemberProfileVo memberProfileVo);
 
 	public MemberProfileVo selectMemberProfile(int member_code);
@@ -30,4 +20,8 @@ public interface MemberDao {
 	public List<MemberJoinProfileVo> nameSearchAutoComplete(int my_member_code, String id_name);
 
 	public List<MemberJoinProfileSimpleVo> selectMemberList(List<Integer> codeList);
+
+	public int updateMemberProfile(MemberProfileVo memberProfileVo);
+
+	public int updateMember(MemberVo memberVo);
 }

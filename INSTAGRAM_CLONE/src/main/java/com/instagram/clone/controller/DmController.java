@@ -21,7 +21,7 @@ import com.instagram.clone.model.vo.DmVo;
 import com.instagram.clone.model.vo.MemberJoinProfileVo;
 
 @RestController
-@RequestMapping("/dm")
+@RequestMapping("/dm/*")
 public class DmController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FeedController.class);
@@ -33,7 +33,7 @@ public class DmController {
 	private MongoDmBiz mongoDmBiz;
 
 	// dm.jsp 로 이동
-	@GetMapping(value = "/dm")
+	@GetMapping(value = "")
 	public ModelAndView dmPage() {
 		logger.info("DM/DM.GET");
 
@@ -41,14 +41,14 @@ public class DmController {
 	}
 
 	// nameSearchAutoComplete
-	@PostMapping(value = "/nameSearchAutoComplete")
+	@PostMapping(value = "nameSearchAutoComplete")
 	public List<MemberJoinProfileVo> nameSearchAutoComplete(int my_member_code, String id_name) {
 		logger.info("DM/nameSearchAutoComplete.POST");
 		return memberBiz.nameSearchAutoComplete(my_member_code, id_name);
 	}
 
 	// 채팅방 리스트 방기
-	@PostMapping(value = "/findMyChatRoomList")
+	@PostMapping(value = "findMyChatRoomList")
 	public List<DmVo> findMyChatRoomList(@RequestBody Map<String, Integer> my_member_code) {
 		logger.info("DM/findMyChatRoomList.POST");
 
@@ -60,7 +60,7 @@ public class DmController {
 	}
 
 	// 채팅방 만들기
-	@PostMapping(value = "/makeChatRoom")
+	@PostMapping(value = "makeChatRoom")
 	public Map<String, Object> makeChatRoom(@RequestBody List<Map<String, Object>> memberList) {
 		logger.info("DM/mackChatRoom.POST");
 
@@ -81,7 +81,7 @@ public class DmController {
 	}
 
 	// 채팅리스트 가져오기
-	@PostMapping(value = "/selectChatList")
+	@PostMapping(value = "selectChatList")
 	public List<DmVo> selectChatList(@RequestBody Map<String, Object> room_code) {
 		logger.info("DM/selectChatList.POST");
 

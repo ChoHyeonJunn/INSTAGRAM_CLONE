@@ -8,11 +8,13 @@
 		<typeAlias type="com.instagram.clone.model.vo.MemberJoinProfileVo" alias="MemberJoinProfileVo"/>
 		<typeAlias type="com.instagram.clone.model.vo.MemberJoinProfileSimpleVo" alias="MemberJoinProfileSimpleVo"/>
 		<typeAlias type="com.instagram.clone.model.vo.FeedVo" alias="FeedVo"/>
+		<typeAlias type="com.instagram.clone.model.vo.BoardVo" alias="BoardVo"/>
 	</typeAliases>
 
 
 	<mappers>
 		<mapper resource="/mybatis/instagram-member-mapper.xml" />
+		<mapper resource="/mybatis/instagram-board-mapper.xml" />
 	</mappers>
 	<!-- resource = src/main/resources -->
 </configuration>

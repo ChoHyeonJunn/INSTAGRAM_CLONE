@@ -60,4 +60,5 @@
 		<!-- <websocket:sockjs /> -->
 	</websocket:handlers>
 	<beans:bean id="echoHandler" class="com.instagram.clone.controller.EchoHandler" />
+
 </beans:beans>

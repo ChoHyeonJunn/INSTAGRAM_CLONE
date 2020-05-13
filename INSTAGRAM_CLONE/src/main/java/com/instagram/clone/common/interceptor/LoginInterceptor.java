@@ -23,17 +23,16 @@ public class LoginInterceptor implements HandlerInterceptor {
 			throws Exception {
 		System.out.println(
 				"==================================================================================== preHandle ==========================================");
-		// logger.info("[INTERCEPTOR] : preHandle");
 		HttpSession session = request.getSession();
 
-		MemberVo member = (MemberVo) session.getAttribute("login");
-
-		if (request.getSession().getAttribute("login") != null //
-				|| request.getRequestURI().contains("/member/login") //
-				|| request.getRequestURI().contains("/member/ajaxemailcheck") //
-				|| request.getRequestURI().contains("/member/ajaxidcheck") //
-				|| request.getRequestURI().contains("/member/join") //
-				|| request.getRequestURI().contains("/member/oauth") //
+		if (session.getAttribute("user") != null //
+				|| request.getRequestURI().contains("/ssoclient/sso")//
+				|| request.getRequestURI().contains("/ssoclient/oauthCallback")//
+//				|| request.getRequestURI().contains("/member/login") //
+//				|| request.getRequestURI().contains("/member/ajaxemailcheck") //
+//				|| request.getRequestURI().contains("/member/ajaxidcheck") //
+//				|| request.getRequestURI().contains("/member/join") //
+//				|| request.getRequestURI().contains("/member/oauth") //
 				//
 				//
 				|| request.getRequestURI().contains("/resources/") //
@@ -42,8 +41,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return true;
 		}
 
-		if (request.getSession().getAttribute("login") == null) {
-			response.sendRedirect("/member/login");
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("/ssoclient/sso");
 		}
 
 		return false;

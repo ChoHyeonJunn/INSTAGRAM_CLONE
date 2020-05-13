@@ -60,7 +60,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		 * org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor
 		 * 때문에 WebSocketSession 객체에서 HttpSession 정보를 받아볼 수 있나보다....
 		 */
-		int member_code = ((MemberVo) session.getAttributes().get("login")).getMember_code();
+		int member_code = ((MemberVo) session.getAttributes().get("user")).getMember_code();
 		int room_code = Integer.parseInt(message.getPayload().split(",")[1]);
 
 		// session 정보에 접속한 방번호를 저장! 원래 존재하던 session은 중복되어 덮어써진다.
@@ -87,7 +87,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	// 채팅 메시지 보내기
 	private void sendChatMessage(WebSocketSession session, TextMessage message) throws IOException {
 
-		int member_code = ((MemberVo) session.getAttributes().get("login")).getMember_code();
+		int member_code = ((MemberVo) session.getAttributes().get("user")).getMember_code();
 		int room_code = Integer.parseInt(message.getPayload().split(",")[1]);
 		String chat_message = message.getPayload().split(",")[2];
 
@@ -106,7 +106,7 @@ public class EchoHandler extends TextWebSocketHandler {
 		for (WebSocketSession sess : sessionMap.keySet()) {
 			if (sessionMap.get(sess) == room_code) {
 				unread_member_code_list
-						.remove((Integer) ((MemberVo) sess.getAttributes().get("login")).getMember_code());
+						.remove((Integer) ((MemberVo) sess.getAttributes().get("user")).getMember_code());
 			}
 		}
 
@@ -125,15 +125,15 @@ public class EchoHandler extends TextWebSocketHandler {
 			for (MemberJoinProfileSimpleVo room_member : newChat.getMember_list()) {
 
 				// 채팅방에 참여중인 멤버코드리스트 와 접속중인 멤버코드들 중 일치하는 코드가 있다면 메시지 보냄
-				if (room_member.getMember_code() == ((MemberVo) sess.getAttributes().get("login")).getMember_code()) {
+				if (room_member.getMember_code() == ((MemberVo) sess.getAttributes().get("user")).getMember_code()) {
 					JsonObject json = new JsonObject();
 					json.addProperty("chat", "chat");
 					json.addProperty("room_code", room_code);
 					json.addProperty("member_code", member_code);
-					json.addProperty("member_id", ((MemberVo) session.getAttributes().get("login")).getMember_id());
+					json.addProperty("member_id", ((MemberVo) session.getAttributes().get("user")).getMember_id());
 					json.addProperty("member_profile_image_s_name",
 							((MemberProfileVo) session.getAttributes().get("profile"))
-									.getMember_profile_image_s_name());
+									.getMember_img_server_name());
 					json.addProperty("chat_message", chat_message);
 					json.addProperty("chat_message_date", newChat.getMessage_date());
 

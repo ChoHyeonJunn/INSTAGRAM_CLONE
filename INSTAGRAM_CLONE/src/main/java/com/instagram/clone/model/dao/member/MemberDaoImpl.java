@@ -20,31 +20,6 @@ public class MemberDaoImpl implements MemberDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public MemberVo login(MemberVo vo) {
-		return sqlSession.selectOne(NAMESPACE + "login", vo);
-	}
-
-	@Override
-	public MemberVo snsLogin(MemberVo vo) {
-		return sqlSession.selectOne(NAMESPACE + "snsLogin", vo);
-	}
-
-	@Override
-	public int emailCheck(MemberVo vo) {
-		return sqlSession.selectOne(NAMESPACE + "emailCheck", vo);
-	}
-
-	@Override
-	public int idCheck(MemberVo vo) {
-		return sqlSession.selectOne(NAMESPACE + "emailCheck", vo);
-	}
-
-	@Override
-	public int join(MemberVo vo) {
-		return sqlSession.insert(NAMESPACE + "join", vo);
-	}
-
-	@Override
 	public int insertProfile(MemberProfileVo memberProfileVo) {
 		return sqlSession.insert(NAMESPACE + "insertProfile", memberProfileVo);
 	}
@@ -56,7 +31,20 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int updateMemberProfileImage(MemberProfileVo member_profile) {
+		System.out.println(member_profile);
 		return sqlSession.update(NAMESPACE + "updateMemberProfileImage", member_profile);
+	}
+
+	@Override
+	public int updateMemberProfile(MemberProfileVo memberProfileVo) {
+		System.out.println(memberProfileVo);
+		return sqlSession.update(NAMESPACE + "updateMemberProfile", memberProfileVo);
+	}
+
+	@Override
+	public int updateMember(MemberVo memberVo) {
+		System.out.println(memberVo);
+		return sqlSession.update(NAMESPACE + "updateMember", memberVo);
 	}
 
 	@Override

@@ -131,15 +131,6 @@
 
 		<!-- 추가 -->
 
-		<!-- postgreSql 42.2.11 -->
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.2.11</version>
-		</dependency>
-
-
 		<!-- mongodb.com - docs - java edition - 3.11.2 - mongodb driver section 
 			- installation Guide -->
 		<!-- <org.springframework-version>5.2.5.RELEASE</org.springframework-version> 
@@ -164,6 +155,7 @@
 			<artifactId>spring-data-commons</artifactId>
 			<version>2.2.6.RELEASE</version>
 		</dependency>
+
 
 
 		<!-- mybatis 3.5.4 -->
@@ -262,9 +254,33 @@
 			<artifactId>cos</artifactId>
 			<version>05Nov2002</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.4</version>
+			<scope>provided</scope>
+		</dependency>
 
 
-
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>2.2.6.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.4.15.Final</version>
+		</dependency>
 
 	</dependencies>
 	<build>
