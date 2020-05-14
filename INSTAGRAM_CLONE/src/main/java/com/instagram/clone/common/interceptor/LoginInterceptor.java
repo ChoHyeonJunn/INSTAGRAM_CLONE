@@ -28,6 +28,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (session.getAttribute("user") != null //
 				|| request.getRequestURI().contains("/ssoclient/sso")//
 				|| request.getRequestURI().contains("/ssoclient/oauthCallback")//
+				|| request.getRequestURI().contains("/ssoclient/logout")//
 //				|| request.getRequestURI().contains("/member/login") //
 //				|| request.getRequestURI().contains("/member/ajaxemailcheck") //
 //				|| request.getRequestURI().contains("/member/ajaxidcheck") //

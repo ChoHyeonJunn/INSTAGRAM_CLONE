@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.instagram.clone.common.properties.ApplicationProperties;
 import com.instagram.clone.model.biz.member.MemberBiz;
 import com.instagram.clone.model.vo.MemberVo;
 import com.instagram.clone.ssohandler.domain.entity.Member;
-import com.instagram.clone.ssohandler.domain.vo.ApplicationProperties;
 import com.instagram.clone.ssohandler.service.MemberService;
 
 @RestController
@@ -43,7 +43,7 @@ public class FeedController implements ApplicationProperties {
 
 		if (memberVo == null) {
 			//
-			return new ModelAndView("feed/feed");
+			return new ModelAndView("redirect:feed/");
 		}
 
 		Member member = memberService.getUser(memberVo.getMember_id());
@@ -51,6 +51,7 @@ public class FeedController implements ApplicationProperties {
 
 		if (member.getTokenId() == null) {
 			request.getSession().removeAttribute("user");
+			return new ModelAndView("redirect:feed/");
 		} else {
 			map.put("user", member);
 			// 프로필 session 주입

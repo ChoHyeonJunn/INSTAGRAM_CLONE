@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.instagram.clone.ssohandler.domain.vo.ApplicationProperties;
+import com.instagram.clone.common.properties.ApplicationProperties;
 import com.instagram.clone.ssohandler.domain.vo.Response;
 import com.instagram.clone.ssohandler.domain.vo.TokenRequestResult;
 import com.instagram.clone.ssohandler.service.OAuthService;
@@ -103,6 +103,7 @@ public class SsoController implements ApplicationProperties {
 		Response response = oauthService.logout(tokenId, userName);
 
 		log.debug("\n## logout secceeded {}", userName);
+		System.out.println("\n## logout secceeded " + userName);
 		return response;
 	}
 

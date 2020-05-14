@@ -29,9 +29,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.instagram.clone.common.properties.ApplicationProperties;
 import com.instagram.clone.model.vo.MemberVo;
 import com.instagram.clone.ssohandler.domain.entity.Member;
-import com.instagram.clone.ssohandler.domain.vo.ApplicationProperties;
 import com.instagram.clone.ssohandler.domain.vo.Response;
 import com.instagram.clone.ssohandler.domain.vo.TokenRequestResult;
 import com.instagram.clone.ssohandler.domain.vo.UserInfoResponse;
@@ -83,10 +83,12 @@ public class OAuthServiceImpl implements OAuthService, ApplicationProperties {
 	@Override
 	public Response logout(String tokenId, String userName) {
 		log.debug("\n## logout()");
+		System.out.println("\n## logout()");
 
 		Response response = new Response();
 
 		log.debug("\n## logout {}", userName);
+		System.out.println("\n## logout " + userName);
 		Member member = userService.getUser(userName);
 		if (member == null || member.getTokenId() == null) {
 			return response;
@@ -94,6 +96,7 @@ public class OAuthServiceImpl implements OAuthService, ApplicationProperties {
 
 		String savedTokenId = member.getTokenId();
 		log.debug("\n## in logout savedTokenId, tokenId : '{}', '{}'", savedTokenId, tokenId);
+		System.out.println("\n## in logout savedTokenId, tokenId : " + savedTokenId + ", " + tokenId);
 		if (tokenId.equals(savedTokenId) == false) {
 			return response;
 		}

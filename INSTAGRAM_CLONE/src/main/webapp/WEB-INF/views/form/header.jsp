@@ -72,9 +72,7 @@
 				
 				<!-- nav list -->						
 				<ul class="navbar-nav list-group-horizontal ml-5">
-					<li class="nav-item">
-						<h4 class="mx-2"><a class="nav-link" href="/ssoclient/logout"><i class="fas fa-sign-out-alt"></i></a></h4>
-					</li>
+
 					<li class="nav-item">
 						<h4 class="mx-2"><a class="nav-link" href="/feed/"><i class="fas fa-home"></i></a></h4>
 					</li>
@@ -107,6 +105,9 @@
 						
 							</a>
 						</h4>
+					</li>
+					<li class="nav-item">
+						<h4 class="mx-2"><a class="nav-link" href="/ssoclient/logout"><i class="fas fa-sign-out-alt"></i></a></h4>
 					</li>
 			    </ul>
 			</div>
@@ -157,7 +158,8 @@
 	        
 	        // 소켓 통신 종료 시
 	        ws.onclose=function(event){
-	            alert("소켓 연결종료")
+	            /* alert("소켓 연결종료") */
+	            console.log("소켓 연결종료")
 	        }
 		})
 	</script>
